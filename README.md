@@ -53,10 +53,15 @@ Go to the root folder of *TorCrawler* where you should see the following sub-fol
     http://an.example.url *STATUS CODE*
     
     where *STATUS CODE* could be any of: *DL_OK*, *DL_ERR*. The meaning of the status should be self-explanative.
-    The url and status code is separated by \t
-  
+    The url and status code is separated by \t.
   
 - **Fetcher.pl**
+  
+This is the driving script for crawling task. The usage syntax is,
+  * Fetcher.pl --work-dir=./* 
+  - --workd-dir= specifies the working directory under which two input files should be provided,
+    1. url.in
+    2. url.status
 - **PageParser.pl**
 
 ## Contributing
