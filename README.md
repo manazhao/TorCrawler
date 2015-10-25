@@ -28,12 +28,36 @@ With Tor proxy technique, it can crawl urls with concurrent threads from multipl
   
   curl
   
-
-
-
 ## Usage
+1. ### Start SOCKS proxy
+Go to *Multi-Tor* directory and run script *multi-tor.sh* with the number of proxies as the only argument. If successful, you should see from the dump messages that there are processes created and listening to ports from 9050.
 
-TODO: Write usage instructions
+2. ### Run crawler
+
+Go to the root folder of *TorCrawler* where you should see the following sub-folders,
+* common - scripts independent with crawling task
+* task - task specific files, each task corresponds to sub-folder
+
+#### common
+- **TorGet.php** 
+  This script takes urls from standard input and crawl each url in the order it is fed. Below is an example usage:
+
+  *TorGet.php -h127.0.0.1 -p9050 -d./ -w3*
+    * -h127.0.0.1 - The proxy host (localhost most times)
+    * -p9050  - proxy port starting from 9050 by default
+    * -d./  - working directory, current folder in this example
+    * -w3 - number of seconds of waiting between two consecutive http request
+  
+  If the crawling is successful, the html page will be saved under the working directory with the **md5 hash** of the original url as file name. At the same time, the program will output the crawling status of the given url in the following format:
+  
+    http://an.example.url *STATUS CODE*
+    
+    where *STATUS CODE* could be any of: *DL_OK*, *DL_ERR*. The meaning of the status should be self-explanative.
+    The url and status code is separated by \t
+  
+  
+- **Fetcher.pl**
+- **PageParser.pl**
 
 ## Contributing
 
