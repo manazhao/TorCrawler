@@ -77,6 +77,16 @@ This is the driving script for crawling task. A example usage is,
 
 - **PageParser.pl**
 
+  It parses the downloaded html files with the parser module you give. An example usage:
+  
+  *PageParser.pl --work-dir=. --parser-mod=task::zillow::PageParser < “your files" *
+  
+  You are encouraged to place your parser under task with separate sub-folder as name space, like the above example. 
+  
+  The html files are read from standard input, one line per file. The parsing result file will be saved as json files under your working directory; parsing status will be dumped to standard output.
+  
+  An example *parser module* can be found at *common/PageParserTemplate.pm*. You are supposed to define your own parsing routines given the url pattern represented by regular expression. 
+  
 ## Contributing
 
 1. Fork it!
@@ -86,12 +96,10 @@ This is the driving script for crawling task. A example usage is,
 5. Submit a pull request :D
 
 ## History
-
-TODO: Write history
-
+1. 10-24-2015, initial import
 ## Credits
 
-TODO: Write credits
+1. Qi Zhao, manazhao@gmail.com
 
 ## License
 
