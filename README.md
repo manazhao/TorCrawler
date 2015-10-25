@@ -1,22 +1,7 @@
 
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
-
-- [TorCrawler](#)
-		- [Simple](#)
-		- [Reliable](#)
-		- [Flexible](#)
-		- [Efficient](#)
-	- [Installation](#)
-		- [Dependency](#)
-	- [Usage](#)
-	- [Contributing](#)
-	- [History](#)
-	- [Credits](#)
-	- [License](#)
-
 # TorCrawler
 TorCrawler is single machine based web page crawler. It aims to be simple, reliable, fexlible and efficient.
-
+## Highlights
 ### Simple
 Most of it is coded by Perl, hence the code is concise. The core function only includes three files, Fetcher.pl, PageParser.pl and TorGet.php, resulting less than 400 total number of lines. 
 
