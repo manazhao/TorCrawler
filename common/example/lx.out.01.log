@@ -1,0 +1,24 @@
+$VAR1 = {
+          '\\/homes\\/\\d+_rb' => [
+                                    '\\/homes\\/\\d+_rb',
+                                    '\\/homedetails'
+                                  ]
+        };
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/1473-Merrill-Pl-Santa-Clara-CA-95051/64799459_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/2171-San-Antonio-Pl-Santa-Clara-CA-95051/19555155_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/714-Nicholson-Ave-Santa-Clara-CA-95051/19599890_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/3720-Miramesa-Ct-APT-114-Santa-Clara-CA-95051/19551262_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/121-Buckingham-Dr-UNIT-25-Santa-Clara-CA-95051/19601153_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/1841-Nobili-Ave-Santa-Clara-CA-95051/19554174_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/920-Wren-Ave-Santa-Clara-CA-95051/19617197_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/2563-Gallup-Dr-Santa-Clara-CA-95051/19553235_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/2601-Cortez-Dr-OFC-4201-Santa-Clara-CA-95051/79844383_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/150-Saratoga-Ave-UNIT-352-Santa-Clara-CA-95051/19601081_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/3003-Kaiser-Drive-B-B-Santa-Clara-CA-95051/2101537838_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/Kaiser-Dr-Santa-Clara-CA-95051/2101552084_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/2724-Pruneridge-Ave-Santa-Clara-CA-95051/122247069_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/3033-Kaiser-Dr-UNIT-E-Santa-Clara-CA-95051/19596948_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/Warburton-Ave-Santa-Clara-CA-95051/2101598419_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/1400-Bowe-Ave-APT-1606-Santa-Clara-CA-95051/19597449_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/2167-Santa-Cruz-Ave-Santa-Clara-CA-95051/19555289_zpid/
+[ERROR]: failed to open downloaded file: http://www.zillow.com/homedetails/3020-Miles-Dr-Santa-Clara-CA-95051/2101666956_zpid/
