@@ -57,11 +57,22 @@ Go to the root folder of *TorCrawler* where you should see the following sub-fol
   
 - **Fetcher.pl**
   
-This is the driving script for crawling task. The usage syntax is,
-  * Fetcher.pl --work-dir=./* 
-  - --workd-dir= specifies the working directory under which two input files should be provided,
-    1. url.in
-    2. url.status
+This is the driving script for crawling task. A example usage is,
+  *Fetcher.pl --work-dir=./*
+  which uses current directory as working directory. Working directory is the place where all crawling and parsing activities take place. The intermediate files and downloaded web pages will be saved here. You need to supply two files as the input for **Fetcher.pl**
+  1. *url.status*
+  
+    Each line has two tab separated fields which are the targeting url and its status. This file will be updated when the crawling task proceeds and the status of each url will also be udpated accordingly. Possible status values include: 
+    - *DL_NEW* - url that has not been crawled yet. It could be given by user or links extracted from crawled pages
+    - *DL_ERR1* - url failing once
+    - *DL_ERR2* - url failing twice
+    - *DL_ERR3* - url failing three times
+    - *DL_OK* - url that is crawled properly and it will be skipped in further crawling rounds, so is url that fails more than three times; otherwise, the url will be included in *url.in* file. 
+
+  2. *url.in*
+
+    Each line is a targeting url to crawl. This file will be updated after each fetching round. 
+
 - **PageParser.pl**
 
 ## Contributing
