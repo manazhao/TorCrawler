@@ -2,13 +2,13 @@
 use strict;
 use warnings;
 require Exporter;
-package task::zillow::PageParser;
+#package task::myproj::PageParser;
 
 our @ISA = qw(Exporter);
 #@EXPORT_OK = qw(munge frobnicate);  # symbols to export on request
 our @EXPORT = qw(get_parser_map);  # symbols to export on request
 
-sub parse_home_details{
+sub parse_url1{
 	my ($pq) = @_;
 	my %result = ();
 	return \%result;
@@ -17,7 +17,7 @@ sub parse_home_details{
 # only export this function
 sub get_parser_map{
 	return {
-		"/homedetails" => \&parse_home_details
+		"/url1" => \&parse_url1
 	};
 }
 
