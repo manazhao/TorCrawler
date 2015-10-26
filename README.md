@@ -85,8 +85,16 @@ This is the driving script for crawling task. A example usage is,
   
   The html files are read from standard input, one line per file. The parsing result file will be saved as json files under your working directory; parsing status will be dumped to standard output.
   
-  An example *parser module* can be found at *common/PageParserTemplate.pm*. This template can be a good start point for your task. So, you might want to copy and modify it. You are obligated to implement *get_parser_map* function and export it. *get_parser_map* should return a hash map which maps url patterns (by *regular expressions*) to function handlers which do the information extraction and return *key-value pair* results wrapped in a hash map reference.
+  Take the following steps to prepare your own parser module:
   
+    1. under *task* folder, create a folder for your task/project. e.g. *task/myproj*.
+    2. copy *common/PageParserTemplate.pm* to *task/myproj* and rename it as *task/myproj/PageParser.pm*.
+    3. modify *PageParser.pm*. 
+      - uncomment **package task::myproj::PageParser** 
+      - define a list of url patterns and their handler function, just like *parse_url1*. 
+      - Each url handler function e.g. *parse_url1* will take *$pq* as the only argument. *$pq* is *pQuery* object which represents the html dom. You can manipulate *$pq* through CSS3 selectors. Please refer to http://search.cpan.org/~ingy/pQuery-0.07/lib/pQuery.pm for detailed usage. 
+    
+
 ## Contributing
 
 1. Fork it!
