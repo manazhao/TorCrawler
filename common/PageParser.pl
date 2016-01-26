@@ -29,6 +29,7 @@ load $parseModule, qw(get_parser_map);
 
 # get_parser_map is defined the provided module
 my $regexParserMap = get_parser_map();
+#print Dumper($regexParserMap);
 
 chdir $workDir;
 -d "parse" or mkdir "parse";

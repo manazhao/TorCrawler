@@ -37,7 +37,7 @@ update_url_status();
 
 # generate to parse file
 print ">>> generate parse url list\n";
-`grep -P "DL_OK|DL_EXTRACTED" url.status|cut -f1 > parse.in`;
+`grep -P "(DL_OK)|(DL_EXTRACTED)" url.status|cut -f1 > parse.in`;
 
 # go through the list
 my $urlCnt = `wc -l parse.in|cut -f1 -d' '`;

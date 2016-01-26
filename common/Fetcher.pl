@@ -82,7 +82,7 @@ sub start_batch_download{
 		my $logFile = sprintf("url.out.%02d.log",$i);
 		my $outUrlFile = sprintf("url.out.%02d",$i);
 		# construct download command line, wait: 2 seconds
-		my $cmd = "TorGet.php -d$pageDir -w$requstDelay " . ($proxy ? "-p$proxy -h127.0.0.1" : "") . " < $urlFile > $outUrlFile 2>$logFile";
+		my $cmd = "sort -k3 -d $urlFile | TorGet.php -d$pageDir -w$requstDelay " . ($proxy ? "-p$proxy -h127.0.0.1" : "") . " > $outUrlFile 2>$logFile";
 		print ">>> start to download batch $i: $cmd\n";
 		my $pid = fork();
 		if($pid){
@@ -179,11 +179,13 @@ sub extract_links{
 	`find . -type f -name "lx.out.[0-9][0-9]" |xargs -I {} cat {} >> lx.out`;
 	# reset the url status map
 	my %urlStatus = ();
+	my %urlPriority = ();
 	open FILE, "<", "url.status" or die $!;
 	while(<FILE>){
 		chomp;
-		my($url,$status) = split /\t/;
+		my($url,$status, $priority) = split /\t/;
 		$urlStatus{$url} = $status;
+		$urlPriority{$url} = $priority;
 	}	
 	close FILE;
 
@@ -191,9 +193,10 @@ sub extract_links{
 	open FILE, "<", "lx.out" or die $!;
 	while(<FILE>){
 		chomp;
-		my($url,$status) = split /\t/;
+		my($url,$status,$priority) = split /\t/;
 		if(!exists $urlStatus{$url} || ($statusOrderMap{$urlStatus{$url}} < $statusOrderMap{$status})) {
 			$urlStatus{$url} = $status;
+			$urlPriority{$url} = $priority;
 		}
 	}	
 	close FILE;
@@ -210,7 +213,8 @@ sub extract_links{
 	while(my($url,$status) = each %urlStatus){
 		print FILE join("\t",($url,$status)) . "\n";
 		if(exists $toDownload{$status}){
-			print IN_FILE join("\t",($url,$status)) . "\n";
+			my $priority = $urlPriority{$url};
+			print IN_FILE join("\t",($url,$status,$priority)) . "\n";
 		}
 	}
 	close FILE;
@@ -224,12 +228,14 @@ sub update_url_status{
 	# read in all url status
 	print ">>> start to update url status\n";
 	my %urlStatus = ();
+	my %urlPriority = ();
 	open FILE, "<", $urlStatusFile or die $!;
 	while(<FILE>){
 		chomp;
-		my($url,$status) = split /\t/;
+		my($url,$status,$priority) = split /\t/;
 		(defined $status and $status and exists $statusOrderMap{$status}) or die "illegal status detected in the url.status file and it needs to be fixed immediately!";
 		$urlStatus{$url} = $status;
+		$urlPriority{$url} = $priority;
 	}
 	# print Dumper(\%urlStatus);
 	close FILE;
@@ -276,8 +282,11 @@ sub update_url_status{
 		);
 	while(my($url,$status) = each %urlStatus){
 		# write the result to 
-		print STATUS_FILE join("\t",($url,$status)) . "\n";	
-		exists $toDownload{$status} and print IN_FILE join("\t",($url,$status)) . "\n";
+		#	my $priority = $urlPriority{$url};
+		my $priority = 10;
+		
+		print STATUS_FILE join("\t",($url,$status,$priority)) . "\n";	
+		exists $toDownload{$status} and print IN_FILE join("\t",($url,$status,$priority)) . "\n";
 	}
 	close STATUS_FILE;
 	close IN_FILE;

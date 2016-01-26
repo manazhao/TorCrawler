@@ -6,6 +6,7 @@
 $proxyHost = null;
 $proxyPort = null;
 $waitSeconds = 3;
+$cookieJar = "";
 
 $workDir = ".";
 
@@ -27,6 +28,10 @@ if(isset($options["w"])){
 	$waitSeconds = $options["w"];
 }
 
+if(isset($options["c"])){
+	$cookieJar = $options["c"];
+}
+
 
 # setup curl
 $ch = curl_init();
@@ -42,6 +47,10 @@ if($proxyHost && $proxyPort){
 # switch working directory
 chdir($workDir);
 
+# set cookie file if provided
+if ($cookieJar) {
+	curl_setopt ($ch, CURLOPT_COOKIEJAR, $cookieJar);
+}
 
 $fh = fopen("php://stdin","r");
 while(($line = fgets($fh))){
