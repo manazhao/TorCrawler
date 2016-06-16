@@ -71,7 +71,7 @@ sub usage{
 	my $usage = <<EOF;
 PageParser	parsing the html pagse crawled from a website
 	--work-dir			working directory, default is current directory
-	--parse-mod			name of the parser module, required
+	--parser-mod			name of the parser module, required
 EOF
 	die $usage;
 }

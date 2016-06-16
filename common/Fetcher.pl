@@ -10,7 +10,7 @@ use Digest::MD5 qw(md5_hex);
 
 my $workDir = ".";
 my $pageDir = "page";
-my $requstDelay = 2;
+my $requstDelay = 5;
 my $numLines;
 my $numBatches;
 my $splitSize;
